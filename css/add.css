@@ -1,0 +1,32 @@
+.add {
+  margin: 0 auto 160px;
+}
+.contacts_input[type='email'],
+.contacts_input[type='text'] {
+  margin: 0 0 10px 0;
+}
+
+.form .form-divider {
+  height: 30px;
+}
+
+.addButton {
+  height: 30px;
+  width: 105px;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  margin: 5px 0 10px;
+  color: #cccccc;
+}
+.addButton:hover {
+  color: #000000;
+}
+.addButtonIcon {
+  background-color: #cccccc;
+  color: #fff;
+  padding: 2px;
+}
+button:focus {
+  outline: none;
+}

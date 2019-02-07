@@ -1,0 +1,443 @@
+<html>
+  <head>
+     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/first.css" />
+
+    <script src="js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <title>Ilovetriathlon.kz</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="s1pmpd00-2 hVmFLl"></div>
+        <div class="s1klotig-1 fxmRcu">
+
+            <div class="s1klotig-3 iHUDBB">
+                <a href="https://almaty.ilovesupersport.com/">
+                  <img
+                  src="images/mainLogo.svg"
+                  width="170"
+                  alt=""
+                  style="margin: 6px 0"
+                />
+                </a>
+              </div>
+          <ul class="s1klotig-9 lhlpmY">
+            <li class="s1klotig-10 eFXTgb">
+              <a href="https://almaty.ilovesupersport.com/programs">
+                <div class="s1klotig-11 hGczAG">
+                  <span>Программы</span>
+                </div>
+              </a>
+            </li>
+            <li class="s1klotig-10 eFXTgb">
+              <a href="https://almaty.ilovesupersport.com/lectures">
+                <div class="s1klotig-11 jSnVEH">
+                  <span>Лекции</span>
+                </div>
+              </a>
+            </li>
+            <li class="s1klotig-10 eFXTgb">
+              <a href="https://almaty.ilovesupersport.com/blog">
+                <div class="s1klotig-11 jSnVEH">
+                  <span>Блог</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div class="s1klotig-12 iSaKxK">
+            <div class="s1klotig-13 hKviLk" direction="running">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/running">RUNNING</a>
+            </div><div class="s1klotig-13 fQsrwx" direction="swimming">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/swimming">SWIMMING</a>
+            </div>
+            <div class="s1klotig-13 iISVNW" direction="cycling">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/cycling">CYCLING</a>
+            </div>
+            <div class="s1klotig-13 igBNAe" direction="skiing">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/skiing">SKIING</a>
+            </div>
+          </div>
+          <div class="s1klotig-4 fJoWii">
+            <div style="    margin: 0 20px 2px 20px;" class="s1klotig-7 hsqmco">
+              <a target="_blank" href="https://web.whatsapp.com/send?phone=77477275090">+7 747 727 5090</a>
+            </div>
+          </div>
+        </div>
+        <div class="s1klotig-15 kXoPgw">
+          <img
+            src="images/mainLogo.svg"
+            style="margin-bottom: 20px"
+            width="300"
+            alt=""
+          />
+          <ul class="s1klotig-9 jyreyb">
+            <li class="s1klotig-10 eFXTgb">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/programs"
+                ><div class="s1klotig-11 hGczAG"><span>Программы</span></div></a
+              >
+            </li>
+            <li class="s1klotig-10 eFXTgb">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/lectures"
+                ><div class="s1klotig-11 jSnVEH"><span>Лекции</span></div></a
+              >
+            </li>
+            <li class="s1klotig-10 eFXTgb">
+              <a target="_blank" href="https://almaty.ilovesupersport.com/blog"
+                ><div class="s1klotig-11 jSnVEH"><span>Блог</span></div></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="header_bottom">
+          <div class="dklc16-1 cRzSmt">
+            <div class="s1pmpd00-4 bZAQAP p71vnk-0 jyYijq" type="goal">
+              <i class="p71vnk-1 bJLzRw s1095zyc-0 gjPalE fas fa-medal"></i>
+              <span class="p71vnk-2 AJeln"><span>Цель</span></span>
+            </div>
+            <h1 class="s1pmpd00-6 gCxIhW"><span>Ironman 70.3 Astana</span></h1>
+            <div class="s1pmpd00-7 imGeYY">Настоящий Ironman совсем рядом</div>
+            <div class="s1pmpd00-9 gaRqTv">
+
+            </div>
+          </div>
+        </div>
+        
+      </header>
+
+      <div class="main_content container">
+        <div class="body_top">
+          <h2 class="body_top_title">НАЙТИ КОМАНДУ</h2>
+          <div class="table-pages-btn">
+            <a
+              v-on:click="changeType('user')"
+              v-bind:class="{ active: type == 'user' }"
+              class="find-command-item"
+              >Спортсмен ищет команду</a
+            >
+            <a
+              v-on:click="changeType('team')"
+              v-bind:class="{ active: type == 'team' }"
+              class=" find-command-item"
+              >Команда ищет спортсмена</a
+            >
+          </div>
+        </div>
+        <div v-if="type == 'user'">
+          <div class="table-default  user-table table-one-line">
+            <table role="table">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th role="columnheader"><div class="table-head-default">кто ищет</div></th>
+                  <th role="columnheader"><div class="table-head-default">дисциплина</div></th>
+                  <th role="columnheader"><div class="table-head-default">результат</div></th>
+                  <th role="columnheader"><div class="table-head-default">Цель</div></th>
+                  <th role="columnheader"><div class="table-head-default">соревнование</div></th>
+                  <th role="columnheader">
+                    <div class="table-head-default table-head-default">
+                      Комментарий
+                    </div>
+                  </th>
+                  <th role="columnheader">
+                    <div class=" table-head-default table-head-default">
+                      Связаться
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                <tr  role="row" v-for="members in info.user">
+                  <td style="width: 18%;" data-content="кто ищет" role="cell">
+
+                    <div  class="sportsman-name">
+                      <p >{{ members.name}}</span>
+                    </div>
+        
+                  </td>
+                  <td style="    padding-top: 7px;" data-content="ДИСЦИПЛИНА" role="cell">
+                    <div class="sportsman-wanted">
+                      <img
+                        v-if="members.stage == 'Бег'"
+                        src="images/run-black.svg"
+                        alt=""
+                      />
+                      <img
+                        v-if="members.stage == 'swim'"
+                        src="images/swim-black.svg"
+                        alt=""
+                      />
+                      <img
+                        v-if="members.stage == 'ride'"
+                        src="images/velo-black.svg"
+                        alt=""
+                      />
+                      <div class="distance">{{ members.distance }} км</div>
+                      <br />
+                    </div>
+                  </td>
+                  <td data-content="	
+                  РЕЗУЛЬТАТ" role="cell" style="white-space: pre-wrap;
+                  word-wrap: break-word;">{{ members.achievement }}</td>
+                  <td style=" width: 16%;" data-content="ЦЕЛЬ" role="cell">{{ members.goal }}</td>
+
+                  <td data-content="СОРЕВНОВАНИЕ" role="cell">{{ members.competition }}<br />{{ members.date }}</td>
+                  <td data-content="КОММЕНТАРИЙ" role="cell">{{members.сomment}}</td>
+                  <td data-content="СВЯЗАТЬСЯ" role="cell">
+                    <div class="icon-socials">
+                      <a class="icon-link" v-if="members.email" :href="'mailto:' + members.email">
+                        <i aria-hidden="true" class="icon fas fa-envelope"></i>
+                      </a>
+                      <a
+                      class="icon-link"
+                        v-if="members.phoneNumber"
+                        v-bind:href="'https://web.whatsapp.com/send?phone=' + members.phoneNumber"
+                        target="_blank"
+                      >
+                      <i aria-hidden="true" class="icon fas fa-phone"></i>
+                      </a>
+
+                      <a
+                      class="icon-link"
+                        v-if="members.vk"
+                        v-bind:href="members.vk"
+                        target="_blank"
+                      >
+                        <i aria-hidden="true" class="icon fab fa-vk"></i>
+                      </a>
+                      <a
+                      class="icon-link"
+                        v-if="members.facebook"
+                        v-bind:href="members.facebook"
+                        target="_blank"
+                      >
+                        <i aria-hidden="true" class="icon fab fa-facebook-f"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div v-if="type == 'team'">
+          <div class="table-default table-find-command table-one-line">
+            <table>
+              <thead>
+                <tr>
+                  <th><div class="table-head-default">Команда</div></th>
+                  <th><div class="table-head-default">состав </div></th>
+                  <th><div class="table-head-default">дисциплина </div></th>
+                  <th><div class="table-head-default">результат</div></th>
+                  <th><div class="table-head-default">кого ищут</div></th>
+ 
+                  <th><div class="table-head-default">Цель</div></th>
+                  <th><div class="table-head-default">соревнование</div></th>
+                  <th>
+                    <div class="table-head-default table-head-default">
+                      о команде
+                    </div>
+                  </th>
+                  <th>
+                    <div class=" table-head-default table-head-default">
+                      Связаться
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="members in info.team">
+                  <td style="width: 12%;" data-content="Команда">                   
+                     <div class="sportsman-name">
+                      {{members.teamName}}
+                    </div></td>
+                  <td class="name"  data-content="состав">
+                    <div class="sportsman-name">
+                      <p class="name_text" v-for="name in members.name">{{name }}</p>
+                    </div>
+                  </td>
+                  <td style="padding-top: 6px" data-content="дисциплина">
+                    <div v-for="(stage, index) in members.stage" class="sportsman-wanted">
+                      
+                      <img
+                        v-if="stage == 'Бег'"
+                        src="images/run-black.svg"
+                        alt=""
+                      />
+                      <img
+                        v-if="stage == 'swim'"
+                        src="images/swim-black.svg"
+                        alt=""
+                      />
+                      <img
+                        v-if="stage == 'ride'"
+                        src="images/velo-black.svg"
+                        alt=""
+                      />
+                      <div class="distance">{{ members.achievement[index]}} км</div>
+                     
+                    </div>
+                  </td>
+                  <td data-content="результат"> <p style="margin: 0px 0 14px" v-for="distance in members.distance">{{distance}}</p></td>
+                  <td style="padding-top: 6px" data-content="кого ищут">
+                      <div v-for="(stage, index) in members.searchName" class="sportsman-wanted">
+                          <img
+                            v-if="stage == 'Бег'"
+                            src="images/run-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'swim'"
+                            src="images/swim-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'ride'"
+                            src="images/velo-black.svg"
+                            alt=""
+                          />
+                          <div class="distance">{{ members.searchDistance[index]}} км</div>
+                         
+                        </div>
+                  </td>
+                  <td data-content="Цель">{{ members.goal }}</td>
+
+                  <td data-content="соревнование">{{ members.competition }}<br />{{ members.date }}</td>
+                  <td data-content="о команде">{{members.сomment}}</td>
+                  <td data-content="Связаться">
+                    <div class="icon-socials">
+                      <a class="icon-link" v-if="members.email" :href="'mailto:' + members.email">
+                        <i aria-hidden="true" class="icon fas fa-envelope"></i>
+                      </a>
+                      <a class="icon-link"
+                        v-if="members.phoneNumber"
+                        v-bind:href="'https://web.whatsapp.com/send?phone=' + members.phoneNumber"
+                        target="_blank"
+                      >
+                        <i aria-hidden="true" class="icon fas fa-phone"></i>
+                      </a>
+
+                      <a class="icon-link"
+                        v-if="members.vk"
+                        v-bind:href="members.vk"
+                        target="_blank"
+                      >
+                        <i aria-hidden="true" class="icon fab fa-vk"></i>
+                      </a>
+                      <a class="icon-link"
+                        v-if="members.facebook"
+                        v-bind:href="members.facebook"
+                        target="_blank"
+                      >
+                        <i aria-hidden="true" class="icon fab fa-facebook-f"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-new-message">
+          <div class="row">
+            <div class="col-lg-7 col-md-6">
+              <div class="text">
+                Никто не&nbsp;понравился? Размести объявление о&nbsp;своих
+                возможностях, и&nbsp;команды будут сами писать тебе
+                с&nbsp;предложениями.
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6">
+              <a v-if="type=='team'" href="addTeam.html" class="btn btn-primary"
+                >разместить объявление<span class="hidden-xs">
+                  о поиске СПОРТСМЕНА</span
+                ></a
+              >
+              <a v-if="type=='user'" href="addUser.html" class="btn btn-primary"
+              >разместить объявление<span class="hidden-xs">
+                о поиске команды</span
+              ></a
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-color: #000;" class="liu4ht-12 kSAMPC">
+        <div class="dklc16-1-sc-iwsKbI NIUWU">
+          <div class="liu4ht-13 kDHhJk">
+            <div class="liu4ht-14 ijuqQe">
+              <a href="/"><img src="images/mainLogo.svg" alt=""/></a>
+              <div class="liu4ht-16 kXQGIM">
+                <span style="color: #fff">© I Love Supersport, 2012—2018</span>
+              </div>
+            </div>
+            <div class="liu4ht-17 fjYshB">
+              <ul style="    color: #fff;" class="liu4ht-18 bGKMGV">
+                <li class="liu4ht-19 kopcvP">
+                  <a target="_blank" href="https://almaty.ilovesupersport.com/programs">Программы</a>
+                </li>
+                <li class="liu4ht-19 kopcvP"><a  target="_blank" href="https://almaty.ilovesupersport.com/lectures">Лекции</a></li>
+                <li class="liu4ht-19 kopcvP">
+                  <a  target="_blank"  href="https://almaty.ilovesupersport.com/company">О компании</a>
+                </li>
+                <li class="liu4ht-19 kopcvP">
+                  <a  target="_blank" href="https://almaty.ilovesupersport.com/company/team">Команда</a>
+                </li>
+                <li class="liu4ht-19 kopcvP">
+                  <a  target="_blank" href="https://almaty.ilovesupersport.com/franchise">Франшиза</a>
+                </li>
+                <li class="liu4ht-19 kopcvP">
+                  <a  target="_blank" href="https://almaty.ilovesupersport.com/corporate">Корпоративные программы</a>
+                </li>
+                <li class="liu4ht-19 kopcvP">
+                  <a  target="_blank" href="http://shop.ilovesupersport.com/" target="_blank"
+                    >Магазин одежды</a
+                  >
+                </li>
+              </ul>
+              <div class="liu4ht-20 eDUMbV">
+                <div style="color: #ffffff;" class="liu4ht-21 bbLYTH">
+                  <div>Центральный Стадион, Восточная трибуна, 3 кабинет</div>
+                  <div><a target="_blank" href="https://web.whatsapp.com/send?phone=77477275090">+7 747 727 5090</a></div>
+                  <div><a  target="_blank" href="https://web.whatsapp.com/send?phone=77475040832">+7 747 504 0832 </a></div>
+                  <div>
+                    <a 
+                      >almaty@ilovesupersport.com</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="liu4ht-22 ffOZVU">
+            <li class="liu4ht-23 gMVwOr">
+              <a href="https://www.facebook.com/ILoveRunningKZ/" target="_blank"
+                ><i class="fab fa-facebook-square"></i
+              ></a>
+            </li>
+            <li class="liu4ht-23 gMVwOr">
+              <a
+                href="https://www.instagram.com/ilovesupersport_kz"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

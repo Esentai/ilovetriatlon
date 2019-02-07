@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"
+    />
+
+    <script src="js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <title>Ilovetriathlon.kz</title>
+  </head>
+  <body>
+    <div id="admin">
+      <div v-if="admin" class="wrapper">
+        <form class="form-signin">
+          <h2 class="form-signin-heading">Please login</h2>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="login"
+            v-model="login"
+          />
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="pass"
+          />
+          <button
+            class="loginBtn btn btn-lg btn-primary btn-block"
+            type="button"
+            v-on:click="loginBtn"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+      <div v-else-if="!admin">
+        <br /><br />
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <h3>СПОРТСМЕН ИЩЕТ КОМАНДУ</h3>
+
+                <table
+                  id="mytable"
+                  style="    font-size: 13px;"
+                  class="table table-bordred table-striped"
+                >
+                  <thead>
+                    <th>Имя</th>
+                    <th>Дисциплина</th>
+                    <th>Телефон</th>
+                    <th>Email</th>
+                    <th>Delete</th>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(members,index) in info.user">
+                      <td>{{ members.name }}</td>
+                      <td>
+                        <div class="sportsman-wanted">
+                          <img
+                            v-if="members.stage == 'Бег'"
+                            src="images/run-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="members.stage == 'swim'"
+                            src="images/swim-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="members.stage == 'ride'"
+                            src="images/velo-black.svg"
+                            alt=""
+                          />
+                          <div class="members.distance">
+                            {{ members.distance }} км
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {{ members.phoneNumber }}
+                      </td>
+                      <td>{{ members.email }}</td>
+
+                      <td>
+                        <p title="Delete">
+                          <button
+                            class="btn btn-danger btn-xs"
+                            v-on:click="deleteUser(index,members.UserId )"
+                          >
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <h3 style="margin-top: 50px;">КОМАНДА ИЩЕТ СПОРТСМЕНА</h3>
+
+                <table
+                  id="mytable"
+                  style="    font-size: 13px;"
+                  class="table table-bordred table-striped"
+                >
+                  <thead>
+                    <th>Команда</th>
+                    <th>Состав</th>
+                    <th>Дисциплина</th>
+                    <th>Кого ищут</th>
+                    <th>Телефон</th>
+                    <th>Email</th>
+
+                    <th>Delete</th>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(members,index) in info.team">
+                      <td>{{ members.teamName }}</td>
+                      <td>
+                        <div class="sportsman-name">
+                          <p
+                            style="margin: 10px 0"
+                            v-for="name in members.name"
+                          >
+                            {{ name }}
+                          </p>
+                        </div>
+                      </td>
+                      <td>
+                        <div
+                          v-for="(stage, index) in members.stage"
+                          class="sportsman-wanted"
+                        >
+                          <img
+                            v-if="stage == 'Бег'"
+                            src="images/run-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'swim'"
+                            src="images/swim-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'ride'"
+                            src="images/velo-black.svg"
+                            alt=""
+                          />
+                          <div class="distance">
+                            {{ members.achievement[index] }} км
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div
+                          v-for="(stage, index) in members.searchName"
+                          class="sportsman-wanted"
+                        >
+                          <img
+                            v-if="stage == 'Бег'"
+                            src="images/run-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'swim'"
+                            src="images/swim-black.svg"
+                            alt=""
+                          />
+                          <img
+                            v-if="stage == 'ride'"
+                            src="images/velo-black.svg"
+                            alt=""
+                          />
+                          <div class="distance">
+                            {{ members.searchDistance[index] }} км
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {{ members.phoneNumber }}
+                      </td>
+                      <td>{{ members.email }}</td>
+
+                      <td>
+                        <p title="Delete">
+                          <button
+                            class="btn btn-danger btn-xs"
+                            v-on:click="deleteTeam(index, members.userId )"
+                          >
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/admin.js"></script>
+    <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle=tooltip]').tooltip();
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

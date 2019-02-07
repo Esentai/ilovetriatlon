@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/add.css" />
+    <script src="js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <meta charset="utf-8" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <title>Ilovetriathlon.kz</title>
+  </head>
+  <body>
+    <div id="add">
+      <div class="container add">
+        <div class="lk_red edit-command">
+          <div class="lk_red-head"><h1 class="h2">Добавить объявление</h1></div>
+        </div>
+        <div class="lk_red-block">
+          <div class="form white-bg edit-ad">
+            <form>
+              <div class="form-group some-inputs">
+                <label>Кто ищет</label>
+                <div class="ad-stage-block">
+                  <div class="row copy-me">
+                    <div class="col-sm-9 col-xs-8 col-xxs-12">
+                      <input v-for="item in newUser.name" v-model="item.value" type="text" placeholder="Имя участника "/>
+                      <!-- <button class="addButton" @click="addInput" type="button"><i class="fas fa-plus"></i> Добавить</button> -->
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="form-group sel-distance">
+                <label>Соревнование</label>
+                <div class="select-wrap">
+                  <select v-model="newUser.competition">
+                    <option value="">(не выбрано)</option>
+                    <option
+                      v-for="option in info.competition"
+                      :value="option"
+                      >{{ option.name }}</option
+                    >
+                  </select>
+                  <div style=" text-align: center;" class="arrow-down">
+                    <i style="font-size: 25px;margin-top: 8px;color: #fff;" class="fas fa-angle-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group some-inputs stage-block">
+                <label>На какой этап</label>
+                <div class="ad-stage-block">
+                  <div class="row copy-me">
+                    <div class="col-sm-4 col-xs-5 col-xxs-12">
+                      <div class="select-wrap">
+                        <select v-model="newUser.stage">
+                          <option value="">(не выбрано)</option>
+                          <option value="swim">Плавание</option>
+                          <option value="ride">Вело</option>
+                          <option value="Бег">Бег</option></select
+                        >
+                        <div style=" text-align: center;" class="arrow-down">
+                          <i style="font-size: 25px;margin-top: 8px;color: #fff;" class="fas fa-angle-down"></i>
+                        </div>
+                       
+                      </div>
+                     
+                      <!-- <input type="text"><span>km</span> -->
+                    </div>
+                    <span style="margin: 7px 7px 0 0 ">на дистанцию</span> <input type="number" v-model="newUser.distance" style="width:80px" type="text"><span style="margin: 7px 0 0 7px">km</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group textarea-group">
+                <label>Цель</label>
+                <div class="select-wrap">
+                  <select v-model="newUser.goal">
+                    <option value="">(не выбрано)</option>
+                    <option value="Результат">Результат</option>
+                    <option value="Приятно провести время">Приятно провести время</option>
+                    <option value="Новые знакомства">Новые знакомства</option>
+                    <option value="Попробовать командную гонку"
+                      >Попробовать командную гонку</option
+                    ></select
+                  >
+                  <div style=" text-align: center;" class="arrow-down">
+                    <i style="font-size: 25px;margin-top: 8px;color: #fff;" class="fas fa-angle-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group textarea-group">
+                <label style="top: 8px;">Достижение</label>
+                <textarea
+                  style="  min-height: 100px;"
+                  v-model="newUser.achievement"
+                ></textarea>
+              </div>
+              <div class="form-group textarea-group">
+                <label style="top: 8px;">Комментарий</label>
+                <textarea
+                  v-model="newUser.comments"
+                  style="  min-height: 150px;"
+                ></textarea>
+              </div>
+              <div class="form-group some-inputs">
+                <label style="top: 12px;">Связаться</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i style="width: 20px" class="fas fa-phone"></i
+                    ></span>
+                  </div>
+                  <input v-model="newUser.phoneNumber" placeholder="Пример: 77474684585" type="number" class="form-control" />
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i style="width: 20px" class="fas fa-envelope"></i
+                    ></span>
+                  </div>
+                  <input v-model="newUser.email" type="text" type="email" class="form-control" />
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i style="width: 20px" class="fab fa-vk"></i
+                    ></span>
+                  </div>
+                  <input v-model="newUser.vk"  type="text" class="form-control" />
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i style="width: 20px" class="fab fa-facebook-f"></i
+                    ></span>
+                  </div>
+                  <input v-model="newUser.facebook" type="text" class="form-control" />
+                </div>
+              
+              <div class="form-divider"></div>
+              <!-- <div class="checkbox">
+                Нажимая на кнопку «Сохранить», вы соглашаетесь с условиями
+                <a href="/upload/personaldata_ru.pdf" target="_blank"
+                  >пользовательского соглашения</a
+                >
+              </div> -->
+              <div class="form-divider"></div>
+              <button
+                type="button"
+                class="btn btn-primary save"
+                v-on:click="save"
+              >
+                <span>Сохранить</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/addUser.js"></script>
+  </body>
+</html>
