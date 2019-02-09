@@ -1,5 +1,8 @@
 <html>
   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -73,7 +76,7 @@
           </div>
           <div class="s1klotig-4 fJoWii">
             <div style="    margin: 0 20px 2px 20px;" class="s1klotig-7 hsqmco">
-              <a target="_blank" href="https://web.whatsapp.com/send?phone=77477275090">+7 747 727 5090</a>
+              <a target="_blank" href="tel:77477275090">+7 747 727 5090</a>
             </div>
           </div>
         </div>
@@ -203,7 +206,7 @@
                       <a
                       class="icon-link"
                         v-if="members.phoneNumber"
-                        v-bind:href="'https://web.whatsapp.com/send?phone=' + members.phoneNumber"
+                        v-bind:href="'tel:' + members.phoneNumber"
                         target="_blank"
                       >
                       <i aria-hidden="true" class="icon fas fa-phone"></i>
@@ -323,7 +326,8 @@
                       </a>
                       <a class="icon-link"
                         v-if="members.phoneNumber"
-                        v-bind:href="'https://web.whatsapp.com/send?phone=' + members.phoneNumber"
+                        data-toggle="tooltip" data-placement="top" title="Tooltip on top"   
+                        v-bind:href="'tel:' + members.phoneNumber"
                         target="_blank"
                       >
                         <i aria-hidden="true" class="icon fas fa-phone"></i>
@@ -410,8 +414,8 @@
               <div class="liu4ht-20 eDUMbV">
                 <div style="color: #ffffff;" class="liu4ht-21 bbLYTH">
                   <div>Центральный Стадион, Восточная трибуна, 3 кабинет</div>
-                  <div><a target="_blank" href="https://web.whatsapp.com/send?phone=77477275090">+7 747 727 5090</a></div>
-                  <div><a  target="_blank" href="https://web.whatsapp.com/send?phone=77475040832">+7 747 504 0832 </a></div>
+                  <div><a target="_blank" href="tel:77477275090">+7 747 727 5090</a></div>
+                  <div><a  target="_blank" href="tel:77475040832">+7 747 504 0832 </a></div>
                   <div>
                     <a 
                       >almaty@ilovesupersport.com</a
@@ -438,6 +442,13 @@
         </div>
       </div>
     </div>
+
+
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
+    </script>
     <script src="js/main.js"></script>
   </body>
 </html>

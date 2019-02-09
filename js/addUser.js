@@ -83,19 +83,13 @@ var app = new Vue({
         }
       }
       console.log(newUser);
-      if (
-        this.newUser.phoneNumber ||
-        this.newUser.email ||
-        this.newUser.vk ||
-        this.newUser.facebook
-      ) {
+      if (this.newUser.phoneNumber && this.newUser.email) {
         if (
           this.newUser.name &&
           this.newUser.competition.name &&
           this.newUser.stage &&
           this.newUser.goal &&
-          this.newUser.achievement &&
-          this.newUser.comments
+          this.newUser.achievement
         ) {
           var formData = this.toFromData(newUser);
           axios
@@ -103,15 +97,11 @@ var app = new Vue({
             .then(function(response) {
               console.log(response.data);
               if (response.data.message == 'User added successfully') {
-                window.location.href = '/';
+                window.location.href = '/#';
               }
             });
           console.log('send');
-        } else {
-          alert('Заполните все поля');
         }
-      } else {
-        alert('Заполните все поля');
       }
     },
 

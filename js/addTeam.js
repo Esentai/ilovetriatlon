@@ -78,8 +78,6 @@ var app = new Vue({
         ) {
           searchName.push(this.newUser.search[i].stage);
           searchDistance.push(this.newUser.search[i].distance);
-        } else {
-          alert('Заполните все поля');
         }
       }
       for (var i = 0; i < this.newUser.name.length; i++) {
@@ -108,27 +106,18 @@ var app = new Vue({
 
       console.log('newUser:', newUser);
       if (newUser.phoneNumber && newUser.email) {
-        if (
-          newUser.competition &&
-          newUser.goal &&
-          newUser.comments &&
-          newUser.teamName
-        ) {
+        if (newUser.competition && newUser.goal && newUser.teamName) {
           var formData = this.toFromData(newUser);
           axios
             .post('./api.php?action=createTeam', formData)
             .then(function(response) {
               console.log(response.data);
               if (response.data.message == 'User added successfully') {
-                window.location.href = '/';
+                window.location.href = '/#';
               }
             });
           console.log('send');
-        } else {
-          alert('Заполните все поля');
         }
-      } else {
-        alert('Заполните все поля');
       }
     },
 

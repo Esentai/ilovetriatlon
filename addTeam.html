@@ -32,7 +32,7 @@
                 <div class="ad-stage-block">
                   <div class="row copy-me">
                     <div class="col-sm-12 col-xs-8 col-xxs-12">
-                      <input type="text" value="" v-model="newUser.teamName" placeholder="Название команды"> 
+                      <input required type="text" value="" v-model="newUser.teamName" placeholder="Название команды"> 
                     </div>
                   </div>
                 </div> 
@@ -44,9 +44,9 @@
                   <div class="row copy-me">
                     <div class="col-sm-12 col-xs-12 col-xxs-12">
                       <div  v-for="item in newUser.name" style="margin: 0;" class="row">
-                        <input class="col-md-5" placeholder="Имя участника "  style="margin: 10px 0 "  v-model="item.name" type="text"/>                       
+                        <input required class="col-md-5" placeholder="Имя участника "  style="margin: 10px 0 "  v-model="item.name" type="text"/>                       
                         <div style="margin: auto 0" class="select-wrap col-md-4">
-                            <select style="width: 185px; 
+                            <select required style="width: 185px; 
                             margin-left: -3px;" v-model="item.stage">
                               <option selected="selected"  value="">(не выбрано)</option>
                               <option value="swim">Плавание</option>
@@ -59,10 +59,11 @@
                         </div>
                         <div style="display: flex;margin: auto;" class="col-md-3">
                             <span style="margin: 7px 7px 7px 0px;">на</span>
-                            <input type="number" v-model="item.achievement" style="width: 100px;padding: 5px;">
+                            <input required type="number" v-model="item.achievement" style="width: 100px;padding: 5px;">
                             <span style="margin: 7px 0px 0px 7px;">km</span>
                         </div>
                         <textarea
+                        required
                         style="  min-height: 40px; padding: 5px 8px"
                         class="col-md-12"
                         placeholder="Результат участника"
@@ -83,7 +84,7 @@
                     
                       <div class="col-sm-4 col-xs-5 col-xxs-12">
                         <div class="select-wrap">
-                          <select v-model="item.stage">
+                          <select required v-model="item.stage">
                             <option value="">(не выбрано)</option>
                             <option value="swim">Плавание</option>
                             <option value="ride">Вело</option>
@@ -106,7 +107,7 @@
               <div class="form-group sel-distance">
                 <label>Соревнование</label>
                 <div class="select-wrap">
-                  <select v-model="newUser.competition">
+                  <select required v-model="newUser.competition">
                     <option selected="selected" value="">(не выбрано)</option>
                     <option
                     v-if="info.competition"
@@ -144,7 +145,7 @@
               <div class="form-group textarea-group">
                 <label>Цель</label>
                 <div class="select-wrap">
-                  <select v-model="newUser.goal">
+                  <select required v-model="newUser.goal">
                     <option selected="selected" value="">(не выбрано)</option>
                     <option value="Результат">Результат</option>
                     <option value="Приятно провести время">Приятно провести время</option>
@@ -168,6 +169,7 @@
               <div class="form-group textarea-group">
                 <label style="top: 8px;">О команде</label>
                 <textarea
+                required
                   v-model="newUser.comments"
                   style="  min-height: 150px;"
                 ></textarea>
@@ -180,7 +182,7 @@
                       ><i style="width: 20px" class="fas fa-phone"></i
                     ></span>
                   </div>
-                  <input v-model="newUser.phoneNumber" id="phone" placeholder="Пример: 77474684585" type="number" class="form-control" />
+                  <input required v-model="newUser.phoneNumber" id="phone" placeholder="Пример: 77474684585" type="number" class="form-control" />
                   <!-- <input type="text" name="masknumber">
                   <input type="text" name="number" style="display:none;"> -->
                 </div>
@@ -190,7 +192,7 @@
                       ><i style="width: 20px" class="fas fa-envelope"></i
                     ></span>
                   </div>
-                  <input v-model="newUser.email" type="text" type="email" class="form-control" />
+                  <input required v-model="newUser.email" type="text" type="email" class="form-control" />
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -218,7 +220,7 @@
               </div> -->
               <div class="form-divider"></div>
               <button
-                type="button"
+                type="submit"
                 class="btn btn-primary save"
                 v-on:click="save"
               >
